@@ -1,0 +1,49 @@
+import sys
+from random import randint
+
+#create a list of play options
+rpc = ["Rock", "Paper", "Scissors"]
+ 
+#assign a random play to the computer
+computer = rpc[randint(0,2)]
+ 
+#set player to False
+player = False
+
+begin = input("\t WELCOME TO ROCK, PAPER OR SCISSORS GAME \n\t Would you like to play Rock, Paper, Scissors? \n\t ").capitalize()
+while begin != "Yes":
+
+    if begin == "No":
+            print("Game Over")
+            sys.exit()
+user = input("\t Enter your name to begin: ")
+print(user)
+print("Rules: You and the computer both choose rock, paper or scissors.")
+print("The winner is decided by these rules: ") 
+print("\n\t a. Rock smashes scissors \n\t b. Paper covers rock \n\t c. Scissors cut paper")  
+while player == False:
+#set player to True
+    
+    player = input("\n\t What do you choose - Rock, Paper or Scissors? \n\t ").capitalize()
+    if player == computer:
+        print("\t Tie!")
+    elif player == "Rock":
+        if computer == "Paper":
+            print("\t You lose!", computer, "covers", player)
+        else:
+            print("\t You win!", player, "smashes", computer)
+    elif player == "Paper":
+        if computer == "Scissors":
+            print("\t You lose!", computer, "cut", player)
+        else:
+            print("\t You win!", player, "covers", computer)
+    elif player == "Scissors":
+        if computer == "Rock":
+            print("\t You lose...", computer, "smashes", player)
+        else:
+            print("\t You win!", player, "cut", computer)
+    else:
+        print("\t That's not a valid play. Check your spelling!")
+    #player was set to True, but we want it to be False so the loop continues
+    player = False
+    computer = rpc[randint(0,2)]
